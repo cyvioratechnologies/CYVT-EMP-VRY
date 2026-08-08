@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyviora Technologies | Certificate Verification</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif}
+body{
+background:#090909;
+background-image:
+radial-gradient(circle at top,#5a0000 0,#090909 40%),
+linear-gradient(rgba(255,0,0,.06) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,0,0,.06) 1px,transparent 1px);
+background-size:auto,35px 35px,35px 35px;
+color:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:30px;
+}
+
+.card{
+width:100%;
+max-width:560px;
+background:#131313;
+border:1px solid #2c2c2c;
+border-radius:22px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(255,0,0,.18);
+}
+
+.top{height:6px;background:linear-gradient(90deg,#900,#ff2d2d,#900);}
+.header{text-align:center;padding:28px}
+
+.logo{width:72px;height:72px;margin:auto;display:block;filter:drop-shadow(0 0 8px rgba(255,0,0,.35));}
+
+.company-name{
+display:flex;justify-content:center;gap:10px;
+margin-top:14px;font-size:30px;font-weight:700;letter-spacing:4px;
+flex-wrap:wrap;
+}
+.cyviora{color:#fff;}
+.technologies{color:#ff2d2d;}
+
+.sub{color:#cfcfcf;font-size:14px;margin-top:5px}
+.line{width:90px;height:3px;background:#ff2d2d;border-radius:10px;margin:18px auto}
+
+.status{
+display:inline-block;
+background:#0d5b28;
+padding:8px 16px;
+border-radius:999px;
+font-weight:600;
+color:#86ffb0;
+border:1px solid #1aff6d;
+}
+
+.content{padding:30px}
+
+.photo{
+display:block;margin:auto;
+width:130px;height:130px;border-radius:50%;
+object-fit:cover;
+border:4px solid #ff2d2d;
+background:#222;
+}
+
+.name{text-align:center;font-size:26px;font-weight:700;margin-top:18px}
+.role{text-align:center;color:#d6d6d6;margin-top:6px;margin-bottom:24px}
+
+.grid{display:grid;gap:14px}
+
+.item{
+background:#1b1b1b;
+border:1px solid #2d2d2d;
+border-radius:12px;
+padding:14px 16px;
+}
+
+.label{font-size:12px;color:#a9a9a9;text-transform:uppercase;letter-spacing:1px}
+.value{font-size:16px;font-weight:600;margin-top:6px;word-break:break-word}
+
+.footer{
+padding:18px;text-align:center;font-size:13px;color:#aaa;
+border-top:1px solid #272727;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<div class="top"></div>
+
+<div class="header">
+
+<img class="logo" src="logo.png">
+
+<h1 class="company-name">
+<span class="cyviora">CYVIORA</span>
+<span class="technologies">TECHNOLOGIES</span>
+</h1>
+
+<div class="sub">Official Certificate Verification</div>
+<div class="line"></div>
+
+<span class="status">✔ VERIFIED CERTIFICATE</span>
+
+</div>
+
+<div class="content">
+
+<img class="photo" id="photo" src="">
+
+<div class="name" id="name"></div>
+<div class="role" id="course"></div>
+
+<div class="grid">
+
+<div class="item"><div class="label">Certificate ID</div><div class="value" id="certid"></div></div>
+<div class="item"><div class="label">Student Name</div><div class="value" id="student"></div></div>
+<div class="item"><div class="label">Course</div><div class="value" id="course2"></div></div>
+<div class="item"><div class="label">Duration</div><div class="value" id="duration"></div></div>
+<div class="item"><div class="label">Completion Date</div><div class="value" id="date"></div></div>
+<div class="item"><div class="label">Status</div><div class="value" id="status"></div></div>
+<div class="item"><div class="label">Verification</div><div class="value" id="verifytext"></div></div>
+
+</div>
+</div>
+
+<div class="footer">
+© 2026 Cyviora Technologies • Certificate Verification Portal
+</div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+// 🎓 CERTIFICATE DATABASE
+const certificates = {
+
+"CERT001":{
+name:"Ankit Naithani",
+student:"Ankit Naithani",
+course:"Cyber Security Master Program",
+course2:"Cyber Security Master Program",
+certid:"CYV-CERT-2025001",
+duration:"6 Months",
+date:"15 Aug 2026",
+status:"Valid",
+photo:"ankit.png",
+verifytext:"This certificate is officially issued by Cyviora Technologies."
+},
+
+"CERT002":{
+name:"Rahul Sharma",
+student:"Rahul Sharma",
+course:"Ethical Hacking",
+course2:"Ethical Hacking",
+certid:"CYV-CERT-2025002",
+duration:"3 Months",
+date:"20 Aug 2026",
+status:"Valid",
+photo:"https://i.imgur.com/yourphoto2.png",
+verifytext:"This certificate is officially issued by Cyviora Technologies."
+}
+
+};
+
+// MATCH
+const cert = certificates[id];
+
+if(cert){
+document.getElementById("name").innerText = cert.name;
+document.getElementById("student").innerText = cert.student;
+document.getElementById("course").innerText = cert.course;
+document.getElementById("course2").innerText = cert.course2;
+document.getElementById("certid").innerText = cert.certid;
+document.getElementById("duration").innerText = cert.duration;
+document.getElementById("date").innerText = cert.date;
+document.getElementById("status").innerText = cert.status;
+document.getElementById("verifytext").innerText = cert.verifytext;
+document.getElementById("photo").src = cert.photo;
+
+if(cert.status === "Valid"){
+document.getElementById("status").style.color = "#67ff99";
+}else{
+document.getElementById("status").style.color = "red";
+}
+
+}else{
+document.body.innerHTML = "<h2 style='color:red;text-align:center;'>❌ Certificate Not Found</h2>";
+}
+</script>
+
+</body>
+</html>
