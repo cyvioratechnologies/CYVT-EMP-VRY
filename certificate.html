@@ -85,10 +85,11 @@ padding:14px 16px;
 .label{font-size:12px;color:#a9a9a9;text-transform:uppercase}
 .value{font-size:16px;font-weight:600;margin-top:6px}
 
+/* 🔥 GREEN DOWNLOAD BUTTON */
 .download-btn{
 display:block;
 margin:25px auto 0;
-background:#ff2d2d;
+background:linear-gradient(90deg,#16a34a,#22c55e);
 padding:12px 20px;
 border-radius:10px;
 color:#fff;
@@ -96,6 +97,12 @@ text-decoration:none;
 font-weight:600;
 text-align:center;
 width:fit-content;
+transition:0.3s;
+}
+
+.download-btn:hover{
+background:linear-gradient(90deg,#15803d,#16a34a);
+transform:scale(1.05);
 }
 
 .footer{
@@ -140,7 +147,6 @@ border-top:1px solid #272727;
 <div class="item"><div class="label">Status</div><div class="value" id="status"></div></div>
 </div>
 
-<!-- 🔥 DOWNLOAD BUTTON -->
 <a id="downloadBtn" class="download-btn" href="#" download>
 ⬇ Download Certificate
 </a>
@@ -157,7 +163,6 @@ border-top:1px solid #272727;
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
-// 🎓 CERTIFICATE DATABASE
 const certificates = {
 
 "CERT001":{
@@ -188,7 +193,6 @@ file:"certificates/cert2.pdf"
 
 };
 
-// MATCH
 const cert = certificates[id];
 
 if(cert){
@@ -202,7 +206,6 @@ document.getElementById("date").innerText = cert.date;
 document.getElementById("status").innerText = cert.status;
 document.getElementById("photo").src = cert.photo;
 
-// 🔥 DOWNLOAD LINK SET
 document.getElementById("downloadBtn").href = cert.file;
 
 }else{
