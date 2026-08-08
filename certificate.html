@@ -37,7 +37,7 @@ box-shadow:0 0 40px rgba(255,0,0,.18);
 .top{height:6px;background:linear-gradient(90deg,#900,#ff2d2d,#900);}
 .header{text-align:center;padding:28px}
 
-.logo{width:72px;height:72px;margin:auto;display:block;filter:drop-shadow(0 0 8px rgba(255,0,0,.35));}
+.logo{width:72px;height:72px;margin:auto;display:block}
 
 .company-name{
 display:flex;justify-content:center;gap:10px;
@@ -82,8 +82,21 @@ border-radius:12px;
 padding:14px 16px;
 }
 
-.label{font-size:12px;color:#a9a9a9;text-transform:uppercase;letter-spacing:1px}
-.value{font-size:16px;font-weight:600;margin-top:6px;word-break:break-word}
+.label{font-size:12px;color:#a9a9a9;text-transform:uppercase}
+.value{font-size:16px;font-weight:600;margin-top:6px}
+
+.download-btn{
+display:block;
+margin:25px auto 0;
+background:#ff2d2d;
+padding:12px 20px;
+border-radius:10px;
+color:#fff;
+text-decoration:none;
+font-weight:600;
+text-align:center;
+width:fit-content;
+}
 
 .footer{
 padding:18px;text-align:center;font-size:13px;color:#aaa;
@@ -98,7 +111,6 @@ border-top:1px solid #272727;
 <div class="top"></div>
 
 <div class="header">
-
 <img class="logo" src="logo.png">
 
 <h1 class="company-name">
@@ -110,7 +122,6 @@ border-top:1px solid #272727;
 <div class="line"></div>
 
 <span class="status">✔ VERIFIED CERTIFICATE</span>
-
 </div>
 
 <div class="content">
@@ -121,16 +132,19 @@ border-top:1px solid #272727;
 <div class="role" id="course"></div>
 
 <div class="grid">
-
 <div class="item"><div class="label">Certificate ID</div><div class="value" id="certid"></div></div>
 <div class="item"><div class="label">Student Name</div><div class="value" id="student"></div></div>
 <div class="item"><div class="label">Course</div><div class="value" id="course2"></div></div>
 <div class="item"><div class="label">Duration</div><div class="value" id="duration"></div></div>
 <div class="item"><div class="label">Completion Date</div><div class="value" id="date"></div></div>
 <div class="item"><div class="label">Status</div><div class="value" id="status"></div></div>
-<div class="item"><div class="label">Verification</div><div class="value" id="verifytext"></div></div>
-
 </div>
+
+<!-- 🔥 DOWNLOAD BUTTON -->
+<a id="downloadBtn" class="download-btn" href="#" download>
+⬇ Download Certificate
+</a>
+
 </div>
 
 <div class="footer">
@@ -155,8 +169,8 @@ certid:"CYV-CERT-2025001",
 duration:"6 Months",
 date:"15 Aug 2026",
 status:"Valid",
-photo:"ankit.png",
-verifytext:"This certificate is officially issued by Cyviora Technologies."
+photo:"images/ankit.png",
+file:"certificates/cert1.pdf"
 },
 
 "CERT002":{
@@ -168,8 +182,8 @@ certid:"CYV-CERT-2025002",
 duration:"3 Months",
 date:"20 Aug 2026",
 status:"Valid",
-photo:"https://i.imgur.com/yourphoto2.png",
-verifytext:"This certificate is officially issued by Cyviora Technologies."
+photo:"images/rahul.png",
+file:"certificates/cert2.pdf"
 }
 
 };
@@ -186,14 +200,10 @@ document.getElementById("certid").innerText = cert.certid;
 document.getElementById("duration").innerText = cert.duration;
 document.getElementById("date").innerText = cert.date;
 document.getElementById("status").innerText = cert.status;
-document.getElementById("verifytext").innerText = cert.verifytext;
 document.getElementById("photo").src = cert.photo;
 
-if(cert.status === "Valid"){
-document.getElementById("status").style.color = "#67ff99";
-}else{
-document.getElementById("status").style.color = "red";
-}
+// 🔥 DOWNLOAD LINK SET
+document.getElementById("downloadBtn").href = cert.file;
 
 }else{
 document.body.innerHTML = "<h2 style='color:red;text-align:center;'>❌ Certificate Not Found</h2>";
